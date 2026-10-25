@@ -546,9 +546,11 @@ html.codex-picture-background :is(main.main-surface, main[class*="_MainContentSu
   border-color: var(--picture-line) !important;
 }
 
-/* Chat's footer backdrop spans the viewport; the composer already paints its surface. */
-html.codex-picture-background [data-thread-scroll-footer]:has([data-chatgpt-composer])
-  > [aria-hidden="true"][class~="bg-surface"] {
+/* Clear both the full-width footer surface and its separate scroll fade. */
+html.codex-picture-background [data-thread-scroll-footer]
+  > [aria-hidden="true"][class~="bg-surface"],
+html.codex-picture-background .thread-scroll-container
+  [aria-hidden="true"][class~="pointer-events-none"][class~="from-surface"] {
   background: transparent !important;
 }
 
