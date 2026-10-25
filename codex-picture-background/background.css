@@ -546,6 +546,18 @@ html.codex-picture-background :is(main.main-surface, main[class*="_MainContentSu
   border-color: var(--picture-line) !important;
 }
 
+/* Chat's footer backdrop spans the viewport; the composer already paints its surface. */
+html.codex-picture-background [data-thread-scroll-footer]:has([data-chatgpt-composer])
+  > [aria-hidden="true"][class~="bg-surface"] {
+  background: transparent !important;
+}
+
+/* The trailing grid cell grows in multiline mode, so keep its filler unpainted. */
+html.codex-picture-background [data-chatgpt-composer] [data-composer-footer-responsive]
+  > [class~="bg-(--composer-layout-surface-background)"] {
+  background: transparent !important;
+}
+
 /* Current composers paint the root, or the body for the home layout. */
 html.codex-picture-background [data-composer-surface-variant]:not([data-composer-utility-bar-variant="home"]),
 html.codex-picture-background [data-composer-utility-bar-variant="home"] > [data-composer-body],
